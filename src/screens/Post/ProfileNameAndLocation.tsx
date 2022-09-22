@@ -5,7 +5,7 @@ import Text from '../../components/Text';
 const ProfileNameAndLocation = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.accountName}>1x</Text>
+      <Text style={styles.accountName}>zaferayan</Text>
       <Text>Istanbul</Text>
     </View>
   );
