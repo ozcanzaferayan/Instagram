@@ -1,24 +1,42 @@
 import React from 'react';
 
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  useColorScheme,
-} from 'react-native';
+import {FlatList, SafeAreaView, StatusBar, useColorScheme} from 'react-native';
+import {PostType} from './Post/models/PostType';
 import Post from './Post/Post';
 
 const HomeScreen = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
+  const items: PostType[] = [
+    {
+      id: 1,
+      username: 'zaferayan',
+      postImage: 'https://picsum.photos/id/598/600/400',
+    },
+    {
+      id: 2,
+      username: 'hasansun',
+      postImage: 'https://picsum.photos/id/1076/600/400',
+    },
+    {
+      id: 3,
+      username: 'yusufakgul',
+      postImage: 'https://picsum.photos/id/1060/600/400',
+    },
+  ];
+
+  const handleRenderItem = props => {
+    return <Post post={props.item} />;
+  };
+
   return (
     <SafeAreaView>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
-        <Post />
-        <Post />
-        <Post />
-      </ScrollView>
+      <FlatList
+        data={items}
+        renderItem={handleRenderItem}
+        keyExtractor={item => item.id.toString()}
+      />
     </SafeAreaView>
   );
 };

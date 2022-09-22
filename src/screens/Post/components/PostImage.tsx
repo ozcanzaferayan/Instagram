@@ -1,13 +1,12 @@
-import {
-  ImageBackground,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {ImageBackground, StyleSheet, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import SvgHeart from '../../../assets/Heart';
 
-const PostImage = () => {
+type Props = {
+  imageSrc: string;
+};
+
+const PostImage = (props: Props) => {
   const [clickCount, setClickCount] = useState(0);
   const [isHeartVisible, setIsHeartVisible] = useState(false);
   const [clickedTime, setClickedTime] = useState(0);
@@ -28,7 +27,7 @@ const PostImage = () => {
   return (
     <TouchableOpacity onPress={handleTap}>
       <ImageBackground
-        source={{uri: 'https://picsum.photos/id/684/600/400'}}
+        source={{uri: props.imageSrc}}
         style={styles.imageContainer}>
         {isHeartVisible && (
           <SvgHeart width="75" height="75" style={styles.heart} />

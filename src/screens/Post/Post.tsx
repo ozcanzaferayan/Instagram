@@ -7,12 +7,16 @@ import PostLikes from './components/PostLikes';
 import PostDescription from './components/PostDescription';
 import PostComments from './components/PostComments';
 import PostTime from './components/PostTime';
+import {PostType} from './models/PostType';
 
-const Post = () => {
+type Props = {
+  post: PostType;
+};
+const Post = (props: Props) => {
   return (
     <View style={styles.container}>
-      <PostHeader />
-      <PostImage />
+      <PostHeader username={props.post.username} />
+      <PostImage imageSrc={props.post.postImage} />
       <PostActions />
       <PostLikes />
       <PostDescription />

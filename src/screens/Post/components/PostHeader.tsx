@@ -4,11 +4,15 @@ import ProfileImage from './ProfileImage';
 import ProfileNameAndLocation from './ProfileNameAndLocation';
 import ProfileActions from './ProfileActions';
 
-const PostHeader = () => {
+export type Props = {
+  username: string;
+};
+
+const PostHeader = (props: Props) => {
   return (
     <View style={styles.container}>
       <ProfileImage />
-      <ProfileNameAndLocation />
+      <ProfileNameAndLocation username={props.username} />
       <ProfileActions />
     </View>
   );

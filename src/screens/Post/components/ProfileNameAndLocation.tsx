@@ -1,11 +1,12 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import Text from '../../../components/Text';
+import {Props} from './PostHeader';
 
-const ProfileNameAndLocation = () => {
+const ProfileNameAndLocation = (props: Props) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.accountName}>zaferayan</Text>
+      <Text style={styles.accountName}>{props.username}</Text>
       <Text>Istanbul</Text>
     </View>
   );
