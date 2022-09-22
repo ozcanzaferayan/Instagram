@@ -25,8 +25,9 @@ const HomeScreen = () => {
     },
   ];
 
-  const handleRenderItem = props => {
-    return <Post post={props.item} />;
+  const handleRenderItem = (post: PostType) => {
+    console.log(post);
+    return <Post post={post} />;
   };
 
   return (
@@ -34,7 +35,7 @@ const HomeScreen = () => {
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <FlatList
         data={items}
-        renderItem={handleRenderItem}
+        renderItem={({item}) => handleRenderItem(item)}
         keyExtractor={item => item.id.toString()}
       />
     </SafeAreaView>
