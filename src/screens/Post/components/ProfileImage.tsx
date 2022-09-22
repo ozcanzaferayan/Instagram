@@ -3,7 +3,10 @@ import React from 'react';
 
 const ProfileImage = () => {
   return (
-    <Image source={require('../../assets/avatar.jpg')} style={styles.image} />
+    <Image
+      source={require('../../../assets/avatar.jpg')}
+      style={styles.image}
+    />
   );
 };
 

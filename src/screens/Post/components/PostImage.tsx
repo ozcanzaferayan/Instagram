@@ -5,7 +5,7 @@ import {
   View,
 } from 'react-native';
 import React, {useState} from 'react';
-import SvgHeart from '../../assets/Heart';
+import SvgHeart from '../../../assets/Heart';
 
 const PostImage = () => {
   const [clickCount, setClickCount] = useState(0);

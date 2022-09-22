@@ -1,6 +1,6 @@
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import Text from '../../components/Text';
+import Text from '../../../components/Text';
 
 const PostComments = () => {
   return (
