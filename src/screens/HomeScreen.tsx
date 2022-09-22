@@ -6,8 +6,9 @@ import {
   StatusBar,
   useColorScheme,
 } from 'react-native';
+import PostActions from './Post/PostActions';
 import PostHeader from './Post/PostHeader';
-import ProfileImage from './Post/ProfileImage';
+import PostImage from './Post/PostImage';
 
 const HomeScreen = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -17,9 +18,8 @@ const HomeScreen = () => {
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         <PostHeader />
-        <ProfileImage />
-        <ProfileImage />
-        <ProfileImage />
+        <PostImage />
+        <PostActions />
       </ScrollView>
     </SafeAreaView>
   );

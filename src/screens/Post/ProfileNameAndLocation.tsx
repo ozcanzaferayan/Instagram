@@ -20,6 +20,6 @@ const styles = StyleSheet.create({
     marginStart: 5,
   },
   accountName: {
-    fontWeight: "bold"
-  }
+    fontWeight: 'bold',
+  },
 });
