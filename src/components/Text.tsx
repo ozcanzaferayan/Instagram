@@ -8,7 +8,6 @@ type Props = {
 
 const Text = (props: Props) => {
   const isDarkMode = useColorScheme() === 'dark';
-
   return (
     <NativeText
       style={[

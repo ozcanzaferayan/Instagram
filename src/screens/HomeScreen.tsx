@@ -1,10 +1,21 @@
 import React from 'react';
 
-import {FlatList, SafeAreaView, StatusBar, useColorScheme} from 'react-native';
+import {
+  Button,
+  FlatList,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  useColorScheme,
+} from 'react-native';
 import {PostType} from './Post/models/PostType';
 import Post from './Post/Post';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../../App';
 
-const HomeScreen = () => {
+type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
+
+const HomeScreen = (props: Props) => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const items: PostType[] = [
@@ -26,13 +37,16 @@ const HomeScreen = () => {
   ];
 
   const handleRenderItem = (post: PostType) => {
-    console.log(post);
     return <Post post={post} />;
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView
+      style={isDarkMode ? styles.darkContainer : styles.lightContainer}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <Button
+        onPress={() => props.navigation.navigate('Search', {name: 'Zafer'})}
+        title="Tıkla"></Button>
       <FlatList
         data={items}
         renderItem={({item}) => handleRenderItem(item)}
@@ -41,5 +55,14 @@ const HomeScreen = () => {
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  darkContainer: {
+    backgroundColor: '#000',
+  },
+  lightContainer: {
+    backgroundColor: '#fff',
+  },
+});
 
 export default HomeScreen;
