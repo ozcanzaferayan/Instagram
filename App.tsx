@@ -5,7 +5,7 @@ import {
 } from '@react-navigation/native';
 import React from 'react';
 import HomeScreen from './src/screens/HomeScreen';
-import SearchScreen from './src/screens/SearchScreen';
+import SearchScreen from './src/screens/SearchScreen/SearchScreen';
 import {Image, TouchableOpacity, useColorScheme} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
