@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../App';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
@@ -6,46 +6,25 @@ import Program from './MaterialTopBarScreens/Program';
 import Events from './MaterialTopBarScreens/Events';
 import Lottery from './MaterialTopBarScreens/Lottery';
 
-const Tab = createMaterialTopTabNavigator<TabParamList>();
+const Tab = createMaterialTopTabNavigator();
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Search'>;
 
-export type TabParamList = {
-  Program: TabScreenProps | undefined;
-  Events: TabScreenProps | undefined;
-  Lottery: TabScreenProps | undefined;
-};
-
-type TabScreenProps = {
-  setTitle: (title: 'Program' | 'Events' | 'Lottery') => void;
-};
-
 const SearchScreen = (props: Props) => {
-  const [headerTitle, setHeaderTitle] = useState('Programlarım');
-
-  useEffect(() => {
-    props.navigation.setOptions({
-      headerTitle: headerTitle,
-    });
-  }, [headerTitle, props.navigation]);
-
   return (
-    <Tab.Navigator>
-      <Tab.Screen
-        name="Program"
-        component={Program}
-        initialParams={{setTitle: setHeaderTitle}}
-      />
-      <Tab.Screen
-        name="Events"
-        component={Events}
-        initialParams={{setTitle: setHeaderTitle}}
-      />
-      <Tab.Screen
-        name="Lottery"
-        component={Lottery}
-        initialParams={{setTitle: setHeaderTitle}}
-      />
+    <Tab.Navigator
+      showPageIndicator={true}
+      screenListeners={{
+        tabPress: e => {
+          const title = e.target?.split('-')[0];
+          props.navigation.setOptions({
+            headerTitle: title,
+          });
+        },
+      }}>
+      <Tab.Screen name="Program" component={Program} />
+      <Tab.Screen name="Events" component={Events} />
+      <Tab.Screen name="Lottery" component={Lottery} />
     </Tab.Navigator>
   );
 };
