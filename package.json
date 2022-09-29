@@ -11,6 +11,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.17.10",
     "@react-navigation/bottom-tabs": "^6.4.0",
     "@react-navigation/material-top-tabs": "^6.2.4",
     "@react-navigation/native": "^6.0.13",
@@ -39,6 +40,7 @@
     "json-server": "^0.17.0",
     "metro-react-native-babel-preset": "^0.67.0",
     "react-test-renderer": "17.0.2",
+    "reactotron-react-native": "^5.0.2",
     "typescript": "^4.8.3"
   },
   "jest": {
