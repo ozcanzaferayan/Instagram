@@ -1,6 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 
 import {
+  ActivityIndicator,
   FlatList,
   SafeAreaView,
   StatusBar,
@@ -12,16 +13,24 @@ import Post from './Post/Post';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../App';
 import axios from '../config/axios';
+import {useQuery} from '@tanstack/react-query';
+import Text from '../components/Text';
+import usePosts from '../hooks/usePosts';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 const HomeScreen = () => {
   const isDarkMode = useColorScheme() === 'dark';
-  const [posts, setPosts] = useState([] as PostType[]);
 
-  useEffect(() => {
-    axios.get('/posts').then(res => setPosts(res.data));
-  }, []);
+  const {isLoading, error, data} = usePosts();
+
+  if (isLoading) {
+    return <ActivityIndicator />;
+  }
+  if (error) {
+    console.log(error);
+    return <Text>Bir hata oluştu</Text>;
+  }
 
   const handleRenderItem = (post: PostType) => {
     return <Post post={post} />;
@@ -32,7 +41,7 @@ const HomeScreen = () => {
       style={isDarkMode ? styles.darkContainer : styles.lightContainer}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <FlatList
-        data={posts}
+        data={data}
         renderItem={({item}) => handleRenderItem(item)}
         keyExtractor={item => item.id.toString()}
       />
