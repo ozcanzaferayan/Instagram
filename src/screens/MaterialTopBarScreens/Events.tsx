@@ -8,7 +8,7 @@ type Props = MaterialTopTabScreenProps<TabParamList, 'Events'>;
 
 const Events = (props: Props) => {
   useEffect(() => {
-    const unsubscribe = props.navigation.addListener('tabPress', e => {
+    const unsubscribe = props.navigation.addListener('tabPress', () => {
       props.route.params?.setTitle('Events');
     });
 

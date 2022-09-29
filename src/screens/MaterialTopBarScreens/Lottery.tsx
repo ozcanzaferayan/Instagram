@@ -5,10 +5,10 @@ import Text from '../../components/Text';
 import {MaterialTopTabScreenProps} from '@react-navigation/material-top-tabs';
 import {TabParamList} from '../SearchScreen';
 
-type Props = MaterialTopTabScreenProps<TabParamList, 'Program'>;
+type Props = MaterialTopTabScreenProps<TabParamList, 'Lottery'>;
 const Lottery = (props: Props) => {
   useEffect(() => {
-    const unsubscribe = props.navigation.addListener('tabPress', e => {
+    const unsubscribe = props.navigation.addListener('tabPress', () => {
       props.route.params?.setTitle('Lottery');
     });
 
