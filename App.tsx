@@ -14,10 +14,13 @@ import ReelsScreen from './src/screens/ReelsScreen';
 import ShopScreen from './src/screens/ShopScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<RootStackParamList>();
 export type RootStackParamList = {
   Home: any;
   Search: {name: string} | undefined;
+  Reels: any;
+  Shop: any;
+  Profile: any;
 };
 
 const App = () => {

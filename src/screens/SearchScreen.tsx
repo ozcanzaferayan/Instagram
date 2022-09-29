@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../App';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
@@ -23,9 +23,12 @@ type TabScreenProps = {
 const SearchScreen = (props: Props) => {
   const [headerTitle, setHeaderTitle] = useState('Programlarım');
 
-  props.navigation.setOptions({
-    headerTitle: headerTitle,
-  });
+  useEffect(() => {
+    props.navigation.setOptions({
+      headerTitle: headerTitle,
+    });
+  }, [headerTitle, props.navigation]);
+
   return (
     <Tab.Navigator>
       <Tab.Screen
