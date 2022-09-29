@@ -11,6 +11,7 @@ import {PostType} from './Post/models/PostType';
 import Post from './Post/Post';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../App';
+import axios from '../config/axios';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
@@ -19,9 +20,7 @@ const HomeScreen = () => {
   const [posts, setPosts] = useState([] as PostType[]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/posts')
-      .then(response => response.json())
-      .then(json => setPosts(json));
+    axios.get('/posts').then(res => setPosts(res.data));
   }, []);
 
   const handleRenderItem = (post: PostType) => {
