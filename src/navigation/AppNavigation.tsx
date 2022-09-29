@@ -1,17 +1,10 @@
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  useColorScheme,
-} from 'react-native';
+import {Image, TouchableOpacity, useColorScheme} from 'react-native';
 import React from 'react';
 import {
   NavigationContainer,
   DarkTheme,
   DefaultTheme,
 } from '@react-navigation/native';
-import {Icon} from 'react-native-vector-icons/Icon';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import HomeScreen from '../screens/HomeScreen';
 import ProfileScreen from '../screens/ProfileScreen';
@@ -83,8 +76,8 @@ const AppNavigation = () => {
                 <Image
                   source={
                     scheme === 'dark'
-                      ? require('./src/assets/logo_white.png')
-                      : require('./src/assets/logo.png')
+                      ? require('../assets/logo_white.png')
+                      : require('../assets/logo.png')
                   }
                   style={{height: 25, width: 90}}
                 />
@@ -93,7 +86,7 @@ const AppNavigation = () => {
             headerTitle: '',
             headerRight: () => (
               <TouchableOpacity onPress={() => console.log('Liked')}>
-                <Icon name="hearto" size={25} color="#fff" />
+                {/* <Icon name="hearto" size={25} color="#fff" /> */}
               </TouchableOpacity>
             ),
           }}
