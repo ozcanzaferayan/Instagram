@@ -12,8 +12,6 @@ import {PostType} from './Post/models/PostType';
 import Post from './Post/Post';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../App';
-import axios from '../config/axios';
-import {useQuery} from '@tanstack/react-query';
 import Text from '../components/Text';
 import usePosts from '../hooks/usePosts';
 
