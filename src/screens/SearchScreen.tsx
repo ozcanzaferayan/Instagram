@@ -6,7 +6,7 @@ import Program from './MaterialTopBarScreens/Program';
 import Events from './MaterialTopBarScreens/Events';
 import Lottery from './MaterialTopBarScreens/Lottery';
 
-const Tab = createMaterialTopTabNavigator();
+const Tab = createMaterialTopTabNavigator<TabParamList>();
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Search'>;
 
@@ -17,7 +17,7 @@ export type TabParamList = {
 };
 
 type TabScreenProps = {
-  setTitle: (title: 'Program' | 'Events' | 'Lottery') => {};
+  setTitle: (title: 'Program' | 'Events' | 'Lottery') => void;
 };
 
 const SearchScreen = (props: Props) => {
