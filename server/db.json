@@ -1,0 +1,19 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "username": "zaferayan",
+      "postImage": "https://picsum.photos/id/598/600/400"
+    },
+    {
+      "id": 2,
+      "username": "hasansun",
+      "postImage": "https://picsum.photos/id/1076/600/400"
+    },
+    {
+      "id": 3,
+      "username": "yusufakgul",
+      "postImage": "https://picsum.photos/id/1060/600/400"
+    }
+  ]
+}

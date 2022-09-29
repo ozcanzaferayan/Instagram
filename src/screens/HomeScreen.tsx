@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 import {
   Button,
@@ -15,26 +15,15 @@ import {RootStackParamList} from '../../App';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
-const HomeScreen = (props: Props) => {
+const HomeScreen = () => {
   const isDarkMode = useColorScheme() === 'dark';
+  const [posts, setPosts] = useState([] as PostType[]);
 
-  const items: PostType[] = [
-    {
-      id: 1,
-      username: 'zaferayan',
-      postImage: 'https://picsum.photos/id/598/600/400',
-    },
-    {
-      id: 2,
-      username: 'hasansun',
-      postImage: 'https://picsum.photos/id/1076/600/400',
-    },
-    {
-      id: 3,
-      username: 'yusufakgul',
-      postImage: 'https://picsum.photos/id/1060/600/400',
-    },
-  ];
+  useEffect(() => {
+    fetch('http://localhost:3000/posts')
+      .then(response => response.json())
+      .then(json => setPosts(json));
+  }, []);
 
   const handleRenderItem = (post: PostType) => {
     return <Post post={post} />;
@@ -44,11 +33,8 @@ const HomeScreen = (props: Props) => {
     <SafeAreaView
       style={isDarkMode ? styles.darkContainer : styles.lightContainer}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <Button
-        onPress={() => props.navigation.navigate('Search', {name: 'Zafer'})}
-        title="Tıkla"></Button>
       <FlatList
-        data={items}
+        data={posts}
         renderItem={({item}) => handleRenderItem(item)}
         keyExtractor={item => item.id.toString()}
       />
