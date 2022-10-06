@@ -1,36 +1,38 @@
 import React from 'react';
 
 import {
+  Button,
+  FlatList,
+  Image,
   SafeAreaView,
   ScrollView,
   StatusBar,
   useColorScheme,
-  Button,
 } from 'react-native';
-import PostHeader from './Post/PostHeader';
-import ProfileImage from './Post/ProfileImage';
-import {useSelector, useDispatch} from 'react-redux';
 import Text from '../components/Text';
-import {RootState} from '../store/store';
-import {decrement, increment} from '../slices/counterSlice';
+import {
+  useGetPokemonByNameQuery,
+  useGetPokemonsPaginationQuery,
+} from '../services/pokemon';
 
 const HomeScreen = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
-  const count = useSelector((state: RootState) => state.value);
-  const dispatch = useDispatch();
+  const {data, error, isLoading} = useGetPokemonsPaginationQuery({
+    limit: 3,
+    offset: 0,
+  });
+
+  if (isLoading) <Text>Loading....</Text>;
+  if (error) <Text>Error</Text>;
 
   return (
     <SafeAreaView>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
-        <Text>{count}</Text>
-        <Button title={'INCREMENT'} onPress={() => dispatch(increment())} />
-        <Button title={'DECREMENT'} onPress={() => dispatch(decrement())} />
-        <PostHeader />
-        <ProfileImage />
-        <ProfileImage />
-        <ProfileImage />
+      <ScrollView>
+        {data && (
+          <Text style={{color: '#fff'}}>{JSON.stringify(data, null, 2)}</Text>
+        )}
       </ScrollView>
     </SafeAreaView>
   );
