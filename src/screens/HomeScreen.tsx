@@ -10,15 +10,15 @@ import {
 import PostHeader from './Post/PostHeader';
 import ProfileImage from './Post/ProfileImage';
 import {useSelector, useDispatch} from 'react-redux';
-import {decrement, increment} from '../reducers/counterReducer';
 import Text from '../components/Text';
+import {RootState} from '../store/store';
+import {decrement, increment} from '../slices/counterSlice';
 
 const HomeScreen = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
-  const count = useSelector((state: any) => state.value);
+  const count = useSelector((state: RootState) => state.value);
   const dispatch = useDispatch();
-  console.log(count);
 
   return (
     <SafeAreaView>
